@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Add Client</h1>
+
+<form method="POST">
+
+    {% csrf_token %}
+
+
+    <input type="text"
+       name="client_name"
+       placeholder="Client Name"
+       required>
+
+<input type="text"
+       name="website"
+       placeholder="Website"
+       required>
+
+<input type="text"
+       name="domain_name"
+       placeholder="Domain Name"
+       required>
+
+<input type="text"
+       name="domain_expiry"
+       placeholder="Expiry Date"
+       onfocus="this.type='date'"
+       required>
+
+<input type="text"
+       name="email"
+       placeholder="Email">
+
+<input type="password"
+       name="password"
+       placeholder="Password">
+
+<input type="text"
+       name="hosting_username"
+       placeholder="Hosting Username">
+
+<input type="password"
+       name="hosting_password"
+       placeholder="Hosting Password">
+
+<input type="number"
+       name="renewal_charge"
+       placeholder="Renewal Charge"
+       required>
+
+    <button type="submit">
+
+        Save Client
+
+    </button>
+
+</form>
+
+{% endblock %}

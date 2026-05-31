@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Dashboard</h1>
+
+<h3>
+    Welcome, {{ request.session.username }} 👋
+</h3>
+
+<br>
+
+<div class="dashboard-cards">
+
+    <div class="dashboard-card">
+
+        <h2>Total Clients</h2>
+
+        <h3>{{ total_clients }}</h3>
+
+    </div>
+
+    <div class="dashboard-card">
+
+        <h2>Expiring Domains</h2>
+
+        <h3>{{ expiring_domains }}</h3>
+
+    </div>
+
+    <div class="dashboard-card">
+
+        <h2>Renewal Revenue</h2>
+
+        <h3>₹{{ total_revenue }}</h3>
+
+    </div>
+
+</div>
+
+<br><br>
+
+<h2>Upcoming Renewals</h2>
+
+<table class="client-table">
+
+    <tr>
+
+        <th>Client</th>
+
+        <th>Domain</th>
+
+        <th>Days Left</th>
+
+    </tr>
+
+    {% for client in expiring_clients %}
+
+    <tr>
+
+        <td>
+            {{ client.client_name }}
+        </td>
+
+        <td>
+            {{ client.domain_name }}
+        </td>
+
+        <td>
+
+            {% if client.days_left <= 7 %}
+
+                🔴 {{ client.days_left }}
+
+            {% elif client.days_left <= 15 %}
+
+                🟠 {{ client.days_left }}
+
+            {% else %}
+
+                🟢 {{ client.days_left }}
+
+            {% endif %}
+
+        </td>
+
+    </tr>
+
+    {% empty %}
+
+    <tr>
+
+        <td colspan="3">
+
+            No domains expiring within 30 days
+
+        </td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% endblock %}

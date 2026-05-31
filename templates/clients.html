@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Client Management</h1>
+<br>
+
+<form method="GET">
+
+    <input
+        type="text"
+        name="search"
+        placeholder="Search Client">
+
+    <button type="submit">
+
+        Search
+
+    </button>
+
+</form>
+
+
+<br>
+
+<a href="/add-client/">
+    <button>Add Client</button>
+</a>
+
+<br><br>
+
+<table class="client-table">
+
+<tr>
+    <th>Client Name</th>
+    <th>Website</th>
+    <th>Domain</th>
+    <th>Expiry</th>
+    <th>Renewal Charge</th>
+    <th>Actions</th>
+</tr>
+
+{% for client in clients %}
+
+<tr>
+    <td>{{ client.client_name }}</td>
+    <td>{{ client.website }}</td>
+    <td>{{ client.domain_name }}</td>
+    <td>{{ client.domain_expiry }}</td>
+    <td>{{ client.renewal_charge }}</td>
+    
+    <td>
+
+<a href="/edit-client/{{ client.id }}/">
+
+<button>
+Edit
+</button>
+
+</a>
+
+<a href="/delete-client/{{ client.id }}/"
+   onclick="return confirm('Delete this client?')">
+
+<button>
+Delete
+</button>
+
+</a>
+
+</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}

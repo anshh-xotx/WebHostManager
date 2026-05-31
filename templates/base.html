@@ -1,0 +1,88 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>WebHostManager</title>
+
+    <link rel="stylesheet"
+          href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+<div class="navbar">
+
+    <div class="logo-container">
+
+    <img
+        src="{% static 'images/innovate_logo.png' %}"
+        alt="Innovate Logo"
+        class="navbar-logo">
+
+    <div class="logo">
+        WebHostManager
+    </div>
+
+</div>
+
+</div>
+
+<div class="main-container">
+
+    <div class="sidebar">
+
+        <a href="/dashboard">Dashboard</a>
+
+        <a href="/clients">Clients</a>
+
+        {% if request.session.role == "admin" %}
+        <a href="/users">Users</a>
+        {% endif %}
+
+        <a href="/domains/">Domains</a>
+
+        <a href="/settings/">
+    Settings
+</a>
+
+<a href="/logout/">Logout</a>
+
+    </div>
+
+    <div class="content">
+        {% if messages %}
+
+    {% for message in messages %}
+
+        <div class="success-message">
+
+            {{ message }}
+
+        </div>
+
+        {% endfor %}
+
+        {% endif %}
+
+        {% block content %}
+
+        {% endblock %}
+
+    </div>
+
+</div>
+<footer
+style="
+text-align:center;
+padding:20px;
+color:gray;
+">
+
+WebHostManager v1.0
+
+</footer>
+</body>
+
+</html>

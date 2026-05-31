@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Domains</h1>
+
+<table class="client-table">
+
+<tr>
+
+    <th>Client</th>
+
+    <th>Domain</th>
+
+    <th>Expiry Date</th>
+
+</tr>
+
+{% for domain in domains %}
+
+<tr>
+
+    <td>{{ domain.client_name }}</td>
+
+    <td>{{ domain.domain_name }}</td>
+
+    <td>{{ domain.domain_expiry }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}

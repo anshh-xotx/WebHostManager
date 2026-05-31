@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Edit Client</h1>
+
+<form method="POST">
+
+{% csrf_token %}
+
+<input
+type="text"
+name="client_name"
+value="{{ client.client_name }}">
+
+<input
+type="text"
+name="website"
+value="{{ client.website }}">
+
+<input
+type="text"
+name="domain_name"
+value="{{ client.domain_name }}">
+
+<input
+type="date"
+name="domain_expiry"
+value="{{ client.domain_expiry }}">
+
+<input
+type="number"
+name="renewal_charge"
+value="{{ client.renewal_charge }}">
+
+<button type="submit">
+
+Update Client
+
+</button>
+
+</form>
+
+{% endblock %}

@@ -1,0 +1,56 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>WebHostManager Login</title>
+
+    <link rel="stylesheet"
+          href="{% static 'css/style.css' %}">
+
+</head>
+
+<body>
+
+<div class="login-container">
+
+    <div class="brand-header">
+
+    <img
+        src="{% static 'images/innovate_logo.png' %}"
+        alt="Innovate Logo"
+        class="brand-logo">
+
+    <h1>WebHostManager</h1>
+
+</div>
+
+    <br>
+
+    <form method="POST">
+
+    {% csrf_token %}
+
+    <input
+        type="text"
+        name="username"
+        placeholder="Username">
+
+    <input
+        type="password"
+        name="password"
+        placeholder="Password">
+
+    <button type="submit">
+        Login
+    </button>
+
+</form>
+
+</div>
+
+</body>
+
+</html>
