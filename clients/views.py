@@ -20,11 +20,12 @@ def login_page(request):
                 "username": username
             }
         )
+        print("USER FOUND:", user is not None)
 
-        if user and check_password(
-            password,
-            user["password"]
-        ):
+        if user:
+            print("PASSWORD CHECK:", check_password(password, user["password"]))
+
+        if user and check_password(password, user["password"]):
 
             request.session["logged_in"] = True
             request.session["username"] = username
