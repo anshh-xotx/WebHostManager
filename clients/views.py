@@ -21,25 +21,30 @@ def login_page(request):
             }
         )
 
-
-        if user and check_password(password, user["password"]):
+        if user and check_password(
+            password,
+            user["password"]
+        ):
 
             request.session["logged_in"] = True
             request.session["username"] = username
             request.session["role"] = user.get(
-    "role",
-    "user"
-)
-            
+                "role",
+                "user"
+            )
+
             return redirect("/dashboard/")
-    messages.error(
-        request,
-        "Invalid username or password")
+
+        messages.error(
+            request,
+            "Invalid username or password"
+        )
 
     return render(
         request,
         "login.html"
     )
+
 
 def dashboard(request):
 
