@@ -34,6 +34,9 @@ def login_page(request):
 )
 
             return redirect("/dashboard/")
+    messages.error(
+        request,
+        "Invalid username or password")
 
     return render(
         request,
