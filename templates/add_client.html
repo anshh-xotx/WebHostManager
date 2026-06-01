@@ -3,49 +3,83 @@
 {% block content %}
 
 <h1>Add Client</h1>
+<p style="margin-bottom:15px;">
+    <span class="required">*</span> Required fields
+</p>
 
 <form method="POST">
 
     {% csrf_token %}
 
+    <label class="form-label">
+    Client Name <span class="required">*</span>
+</label>
 
-    <input type="text"
+<input type="text"
        name="client_name"
-       placeholder="Client Name *"
+       placeholder="Client Name"
        required>
+
+<label class="form-label">
+    Website <span class="required">*</span>
+</label>
 
 <input type="url"
        name="website"
-       placeholder="Website *"
+       placeholder="Website"
        required>
+
+<label class="form-label">
+    Domain Name <span class="required">*</span>
+</label>
 
 <input type="text"
        name="domain_name"
-       placeholder="Domain Name *"
+       placeholder="Domain Name"
        required>
+
+<label class="form-label">
+    Expiry Date <span class="required">*</span>
+</label>
 
 <input type="text"
        name="domain_expiry"
-       placeholder="Expiry Date *"
+       placeholder="Expiry Date"
        onfocus="this.type='date'"
        required>
 
+<label class="form-label">
+    Email <span class="required">*</span>
+</label>
+
 <input type="email"
        name="email_username"
-       placeholder="Email *"
+       placeholder="Email"
        required>
+
+<label class="form-label">
+    Hosting Username
+</label>
 
 <input type="text"
        name="hosting_username"
        placeholder="Hosting Username">
 
+<label class="form-label">
+    Hosting Password
+</label>
+
 <input type="password"
        name="hosting_password"
        placeholder="Hosting Password">
 
+<label class="form-label">
+    Renewal Charge <span class="required">*</span>
+</label>
+
 <input type="number"
        name="renewal_charge"
-       placeholder="Renewal Charge *"
+       placeholder="Renewal Charge"
        required>
 
     <button type="submit">

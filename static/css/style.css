@@ -171,3 +171,12 @@ h3{
     height:55px;
     object-fit:contain;
 }
+.form-label{
+    display:block;
+    margin-bottom:5px;
+    font-weight:600;
+}
+
+.required{
+    color:red;
+}
