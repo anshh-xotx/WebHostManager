@@ -33,6 +33,7 @@ def login_page(request):
     "user"
 )
 
+            print("LOGIN SUCCESS")
             return redirect("/dashboard/")
     messages.error(
         request,
@@ -44,6 +45,7 @@ def login_page(request):
     )
 
 def dashboard(request):
+    print("SESSION DATA:", dict(request.session))
 
     if not request.session.get("logged_in"):
         return redirect("/")
