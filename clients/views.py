@@ -146,7 +146,6 @@ def add_client(request):
             "domain_name": request.POST.get("domain_name"),
             "domain_expiry": request.POST.get("domain_expiry"),
             "email_username": request.POST.get("email_username"),
-            "email_password": request.POST.get("email_password"),
             "hosting_username": request.POST.get("hosting_username"),
             "hosting_password": request.POST.get("hosting_password"),
             "renewal_charge": request.POST.get("renewal_charge")
