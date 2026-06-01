@@ -20,6 +20,16 @@ def login_page(request):
                 "username": username
             }
         )
+        print("LOGIN USERNAME:", username)
+
+        all_users = list(
+    users_collection.find(
+        {},
+        {"username": 1, "_id": 0}
+    )
+)
+
+        print("ALL USERS:", all_users)
         print("USER FOUND:", user is not None)
 
         if user:
