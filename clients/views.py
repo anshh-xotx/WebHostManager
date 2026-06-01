@@ -12,7 +12,7 @@ def login_page(request):
 
     if request.method == "POST":
 
-        username = request.POST.get("username")
+        username = request.POST.get("username").strip().lower()
         password = request.POST.get("password")
 
         user = users_collection.find_one(
@@ -20,20 +20,7 @@ def login_page(request):
                 "username": username
             }
         )
-        print("LOGIN USERNAME:", username)
 
-        all_users = list(
-    users_collection.find(
-        {},
-        {"username": 1, "_id": 0}
-    )
-)
-
-        print("ALL USERS:", all_users)
-        print("USER FOUND:", user is not None)
-
-        if user:
-            print("PASSWORD CHECK:", check_password(password, user["password"]))
 
         if user and check_password(password, user["password"]):
 
@@ -43,8 +30,7 @@ def login_page(request):
     "role",
     "user"
 )
-
-            print("LOGIN SUCCESS")
+            
             return redirect("/dashboard/")
     messages.error(
         request,
@@ -56,7 +42,6 @@ def login_page(request):
     )
 
 def dashboard(request):
-    print("SESSION DATA:", dict(request.session))
 
     if not request.session.get("logged_in"):
         return redirect("/")
@@ -387,7 +372,7 @@ def add_user(request):
 
     if request.method == "POST":
 
-        username = request.POST.get("username")
+        username = request.POST.get("username").strip().lower()
 
         password = request.POST.get("password")
 
